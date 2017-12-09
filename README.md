@@ -1,7 +1,7 @@
 # ajax_request
 jQuery ajax wrapper
 
-Aufruf
+Aufruf \\
 data = {}
 data.action = 'any_php_function';
 data.url = location.href
