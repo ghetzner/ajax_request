@@ -12,7 +12,7 @@ ajax_result(data,ajax){<br>
 // any action <br>
 }<br>
 
-#options
-data.target = result target script (optional)
-data.js = result target script (deprecated)
+#options <br>
+data.target = result target script (optional) <br>
+data.js = result target script (deprecated) <br>
 
