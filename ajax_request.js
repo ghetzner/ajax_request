@@ -1,4 +1,6 @@
 function ajax_request(data) {
+    
+        data.url = data.url.split('?')[0];
 
     $.ajax({
         url: data.url,
