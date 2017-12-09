@@ -20,6 +20,10 @@ function ajax_request(data) {
             }
             catch (e) {
             }
+        },
+        error: function (a, b, c) {
+            console.log(a, b, c);
         }
+
     });
 }
