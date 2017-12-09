@@ -1,19 +1,25 @@
-function ajax_request() {
+function ajax_request(data) {
 
-  $.ajax({
-      url: data.url,
-      data: data,
-      type: 'post',
-      async: true,
-      dataType: 'json',
-      success: function (json) {
-          try {
-              window[data.js](data, json);
-              window[data.target](data, json);
-              window['ajax_result'](data, json);
-          }
-          catch (e) {
-          }
-      }
-  });
+    $.ajax({
+        url: data.url,
+        data: data,
+        type: 'post',
+        async: true,
+        dataType: 'json',
+        success: function (json) {
+            try {
+                if (data.hasOwnProperty('js')) {
+                    window[data.js](data, json);
+                }
+                else if (data.hasOwnProperty('target')) {
+                    window[data.target](data, json);
+                }
+                else {
+                    window['ajax_result'](data, json);
+                }
+            }
+            catch (e) {
+            }
+        }
+    });
 }
