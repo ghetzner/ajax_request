@@ -8,4 +8,6 @@ data.url = location.href <br>
 ajax_request (data); <br>
 
 default callback <br>
-ajax_result(data,ajax);<br>
+ajax_result(data,ajax){<br>
+// any action <br>
+}<br>
