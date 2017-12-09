@@ -2,7 +2,10 @@
 jQuery ajax wrapper
 
 Aufruf <br>
-data = {}
-data.action = 'any_php_function';
-data.url = location.href
-ajax_request (data);
+data = {} <br>
+data.action = 'any_php_function'; <br>
+data.url = location.href <br>
+ajax_request (data); <br>
+
+default callback <br>
+ajax_result(data,ajax);<br>
