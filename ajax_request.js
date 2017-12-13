@@ -1,4 +1,8 @@
 function ajax_request(data) {
+
+    if (!data.hasOwnProperty('url')) {
+        data.url = location.href;
+    }
     
         data.url = data.url.split('?')[0];
 
@@ -22,10 +26,6 @@ function ajax_request(data) {
             }
             catch (e) {
             }
-        },
-        error: function (a, b, c) {
-            console.log(a, b, c);
         }
-
     });
 }
