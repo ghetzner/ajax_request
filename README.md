@@ -2,9 +2,10 @@
 jQuery ajax wrapper
 
 # call <br>
-data = {}; <br>
-data.action = 'myAction'; // <?php $_REQUEST['action']; <br>
-data.url = location.href; <br>
+data = {<br>
+ action: 'myAction',<br>
+ url: location.href<br>
+};<br>
 ajax_request (data); <br>
 
 # default callback <br>
