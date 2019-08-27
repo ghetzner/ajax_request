@@ -1,31 +1,52 @@
-function ajax_request(data) {
+    ajaxRequest(data) {
 
-    if (!data.hasOwnProperty('url')) {
-        data.url = location.href;
-    }
-    
-        data.url = data.url.split('?')[0];
+        if (data !== undefined) {
 
-    $.ajax({
-        url: data.url,
-        data: data,
-        type: 'post',
-        async: true,
-        dataType: 'json',
-        success: function (json) {
+            if (!data.hasOwnProperty('url')) {
+                data.url = location.href;
+            }
+
+            data.url = data.url.split('?')[0];
+
+            let array = {};
+            for (let i in data) {
+                if (data.hasOwnProperty(i)) {
+                    if (typeof data[i] === 'string' || typeof data[i] === 'number') {
+                        array[i] = data[i];
+                    }
+                }
+            }
+            data = array;
+
+            if (!data.hasOwnProperty('api')) {
+                data.api = 'json';
+            }
+            if (data.api !== 'html') {
+                data.api = 'json';
+            }
+
             try {
-                if (data.hasOwnProperty('js')) {
-                    window[data.js](data, json);
-                }
-                else if (data.hasOwnProperty('target')) {
-                    window[data.target](data, json);
-                }
-                else {
-                    window['ajax_result'](data, json);
-                }
+                data.params = config.params;
+            } catch (e) {
             }
-            catch (e) {
-            }
+            let that = this;
+
+            $.ajax({
+                url: data.url,
+                data: data,
+                type: 'post',
+                async: true,
+                dataType: data.api,
+                success: function (result) {
+                    try {
+                        if (data.hasOwnProperty('script')) {
+                            that[data.script](data, result);
+                        }
+                    } catch (e) {
+                    }
+                }
+            });
+        } else {
+            console.warn('Fehler in der Konfiguration');
         }
-    });
-}
+    }
